@@ -1,4 +1,4 @@
-from VA_direction_detector import getDirection
+from VaDirectionDetector import getDirection
 
 ### Action_000 ###################################################
 def Action_000(va_data):
