@@ -1,9 +1,9 @@
 
-import VA_box
-import VA_actions
-import VA_box_tools
-import VA_script
-import VA_config
+import VaBox
+import VaActions
+import VaBoxTools
+import VaScript
+import VaConfigLocal
 
 va_data = {}
 

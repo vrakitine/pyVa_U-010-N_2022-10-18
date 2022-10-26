@@ -1,6 +1,6 @@
-from VA_actions import *
-from VA_direction_detector import *
-from VA_box_tools import *
+from VaActions import *
+from VaDirectionDetector import *
+from VaBoxTools import *
 
 
 def start(va_data):

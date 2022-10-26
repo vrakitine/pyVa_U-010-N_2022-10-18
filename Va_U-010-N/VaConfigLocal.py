@@ -1,4 +1,4 @@
-from VA_script import getVaScript
+from VaScript import getVaScript
 
 
 def setup(va_data):
