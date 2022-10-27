@@ -43,6 +43,15 @@ class VaData():
 
         return self.va_data[temp[1]][0]
 
+
+    def getNameValue(self, key):
+        temp = []
+        temp = key.split('...')
+        if temp[1] not in self.va_data:
+            sys.exit('Error: Attempt to get undefined variable [' + key + ']')
+
+        return self.va_data[temp[1]]
+
     def getAll(self):
 
         return self.va_data

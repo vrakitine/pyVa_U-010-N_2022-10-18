@@ -27,7 +27,7 @@ print('------------------------')
 
 VaBox.start(va_data,local_data)
 
-print(local_data.get('The sum of elements of array...sum'))
+print(local_data.getNameValue('The sum of elements of array...sum'))
 
 print('\nThe end')
 
