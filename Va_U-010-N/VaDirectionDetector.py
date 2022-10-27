@@ -24,7 +24,7 @@ def getDirection(va_data, local_data):
     temp_array = local_data.get('Input array...M')
     local_data.set('The current element of array...current element', temp_array[local_data.get('Index of current element of array...i_main')])
     #if va_data['current_element']['v'] > 0: 
-    if local_data.set('The current element of array...current element') > 0:
+    if local_data.get('The current element of array...current element') > 0:
       #va_data['va']['v']['direction']['d'] = "The current element is a positive number"
       #va_data['va']['v']['direction']['v'] = "Direction_10"
       va_data.set('Direction...direction', 'Direction_10')
@@ -32,7 +32,7 @@ def getDirection(va_data, local_data):
       return
 
     #if not (va_data['current_element']['v'] > 0):
-    if not local_data.set('The current element of array...current element') > 0:      
+    if not local_data.get('The current element of array...current element') > 0:      
       #va_data['va']['v']['direction']['d'] = "The current element is not a positive number"
       #va_data['va']['v']['direction']['v'] = "Direction_20"
       va_data.set('Direction...direction', 'Direction_20')

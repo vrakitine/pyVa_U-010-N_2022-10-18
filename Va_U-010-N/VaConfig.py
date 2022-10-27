@@ -13,4 +13,6 @@ def setup(va):
     va.defineVariable('The current Action...current action', 'Action_000') 
     va.defineVariable('Direction...direction', 'Direction_10') 
 
-    va.defineVariable('This is the log array for tracking custom variables in actions...custom log', []) 
+    va.defineVariable('This is the log array for tracking custom variables in actions...custom_log', []) 
+    va.defineVariable('Number of jumps...jump', 0)
+    va.defineVariable('Max number of jumps...max_jump', 1000)
