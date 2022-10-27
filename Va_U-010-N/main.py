@@ -1,42 +1,33 @@
+import VaBox
+import VaActions
+import VaBoxTools
+import VaScript
+import VaConfig
+import VaConfigLocal
+from VaData import VaData
 
-import VA_box
-import VA_actions
-import VA_box_tools
-import VA_script
-import VA_config
 
-va_data = {}
+va_data = VaData()
+VaConfig.setup(va_data)
+local_data = VaData()
 
-va_data = VA_config.setup(va_data)
+VaConfigLocal.setup(local_data)
+
+local_data.set('Input array...M', [2, -3 , 3])
 
 """
-va_data['va']['v']['is_tracking_on'] = {}
-va_data['va']['v']['is_tracking_on']['v'] = False
-va_data['va']['v']['is_tracking_on']['d'] = "Is tracking ON? (True/False)"
+test = va_data.getAll()
+print(test)
+print('------------------------')
+test = local_data.getAll()
+print(test)
+print('------------------------')
 
-
-va_data['va']['v']['tracking_actions'] = {}
-va_data['va']['v']['tracking_actions']['v'] = ['Action_010']
-va_data['va']['v']['tracking_actions']['d'] = "The list of actions to track"
-    
-va_data['va']['v']['jump_pause_after_actions'] = {}
-va_data['va']['v']['jump_pause_after_actions']['v'] = ['Action_010']
-va_data['va']['v']['jump_pause_after_actions']['d'] = "The jump pause after actions"
 """
 
-va_data['M'] = {}
-va_data['M']['d'] = "Input array"
-va_data['M']['v'] = [10,-20, 1.3, 5, 7, 15]
-va_data['M']['v'] = [2,-3, 1, 5]
-#va_data['M']['v'] = [5]
+VaBox.start(va_data,local_data)
 
-
-print(va_data['M'])
-
-va_data = VA_box.start(va_data)
-
-print(va_data['sum_01'])
-
-VA_box_tools.VA_print_direction_action_tracking(va_data)
+print(local_data.getNameValue('The sum of elements of array...sum'))
 
 print('\nThe end')
+
