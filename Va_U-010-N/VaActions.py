@@ -3,7 +3,6 @@ from VaDirectionDetector import getDirection
 ### Action_000 ###################################################
 def Action_000(va_data):
     print('Action_000')
-    ### Start | Init setting flag_01 == 3
  
     va_data['sum_01'] = {}
     va_data['sum_01']['d'] = "The sum of elements of array"

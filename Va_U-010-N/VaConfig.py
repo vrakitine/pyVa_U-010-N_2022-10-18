@@ -12,3 +12,5 @@ def setup(va):
     va.defineVariable('The previous Action...previous action', 'Unknown') 
     va.defineVariable('The current Action...current action', 'Action_000') 
     va.defineVariable('Direction...direction', 'Direction_10') 
+
+    va.defineVariable('This is the log array for tracking custom variables in actions...custom log', []) 
