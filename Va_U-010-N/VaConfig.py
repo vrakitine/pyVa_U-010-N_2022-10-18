@@ -2,7 +2,7 @@ from VaScript import getVaScript
 
 def setup(va):
 
-    ### The VAOP variables setting
+    ### The VAOP engine variables setting
 
     va.defineVariable('The sequential number of the v-agent jump...p10', 0)
     va.defineVariable('The max number of the v-agent jump. It is for prevent looping...p11', 1000)

@@ -15,12 +15,15 @@ VaConfigLocal.setup(local_data)
 
 local_data.set('Input array...M', [2, -3 , 3])
 
+"""
 test = va_data.getAll()
 print(test)
 print('------------------------')
 test = local_data.getAll()
 print(test)
 print('------------------------')
+
+"""
 
 VaBox.start(va_data,local_data)
 

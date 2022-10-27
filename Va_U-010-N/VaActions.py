@@ -11,7 +11,7 @@ def Action_000(va_data, local_data):
 ### Action_010 ###################################################
 def Action_010(va_data, local_data):
     print('Action_010')
-    #va_data['sum_01']['v'] += va_data['current_element']['v']
+
     local_data.set('The sum of elements of array...sum', 
     local_data.get('The sum of elements of array...sum') + local_data.get('The current element of array M...current element'))
 
