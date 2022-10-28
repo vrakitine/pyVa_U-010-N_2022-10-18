@@ -10,7 +10,7 @@ def setup(va):
     va.defineVariable('The locale language code...p12_1', 'en-US')
     va.defineVariable('VA script...va_script', getVaScript()) 
     va.defineVariable('The previous Action...previous action', 'Unknown') 
-    va.defineVariable('The current Action...current action', 'Action_000') 
+    va.defineVariable('The current Action...current action', 'Action__start') 
     va.defineVariable('Direction...direction', 'Direction_10') 
 
     va.defineVariable('This is the log array for tracking custom variables in actions...custom_log', []) 

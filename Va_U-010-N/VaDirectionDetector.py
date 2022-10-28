@@ -2,8 +2,8 @@ def getDirection(va_data, local_data):
 
     # In this function below we are determine the direction depending on the current element of the array.
 
-    # "Direction_10"    -> "If the current element of the array > 0 and int and (first or third)",
-    # "Direction_20"    -> "If the current element of the array <= 0 or not int or not first or third",
+    # "Direction_10"    -> "If the current element of the array > 0",
+    # "Direction_20"    -> "If the current element of the array <= 0",
     # Direction_1000"   -> "If the current element of the array can not be taken in case of end of array"
 
     va_data.set('Direction...direction', 'The_code_of_the_direction_is _unknown')
