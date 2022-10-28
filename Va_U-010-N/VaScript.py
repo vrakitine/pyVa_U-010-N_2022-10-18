@@ -10,6 +10,7 @@ def getVaScript():
           },
           "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
           "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
+          "Direction_brown":"Action__met_array",  "_010":"Met an array",
           "Direction_red":"Action_9000",  "_010":"The end of array"
       },
       "Action__add_to_sum":{
@@ -22,6 +23,7 @@ def getVaScript():
           },
           "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
           "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
+          "Direction_brown":"Action__met_array",  "_010":"Met an array",
           "Direction_red":"Action_9000",  "_010":"The end of array"
       },
       "Action__do_nothing":{
@@ -34,6 +36,7 @@ def getVaScript():
           },
           "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
           "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
+          "Direction_brown":"Action__met_array",  "_010":"Met an array",
           "Direction_red":"Action_9000",  "_010":"The end of array"
       },   
       "Action_9000":{
@@ -46,6 +49,7 @@ def getVaScript():
           },
           "Direction_green":"Action_END",  "_010":" > 0",
           "Direction_blue":"Action_END",  "_010":" <= 0",
+          "Direction_brown":"Action__met_array",  "_010":"Met an array",
           "Direction_red":"Action_END",  "_010":"The end of array"
       }
     }

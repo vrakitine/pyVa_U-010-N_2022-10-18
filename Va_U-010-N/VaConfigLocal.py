@@ -1,3 +1,5 @@
+from VaData import VaData
+
 def setup(local):
 
     ### The  variables setting:
@@ -6,6 +8,11 @@ def setup(local):
     local.defineVariable('Index of current element of array...i_main', -1)
     local.defineVariable('The current element of array M...current element', 0)
     local.defineVariable('The sum of elements of array...sum', 0)
+
+    local.defineVariable('The depth level description...d_level_description_obj', VaData())
+    local.get('The depth level description...d_level_description_obj').defineVariable("The depth level...d_level_type","Unknown")
+    local.get('The depth level description...d_level_description_obj').defineVariable("The depth level index...d_index", -1)
+    local.get('The depth level description...d_level_description_obj').defineVariable("The depth level max index...d_max_index", -1)
     
 
 
