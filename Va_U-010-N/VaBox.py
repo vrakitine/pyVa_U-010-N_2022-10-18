@@ -1,6 +1,5 @@
 from VaActions import *
 from VaDirectionDetector import *
-from VaBoxTools import *
 
 
 def start(va_data, local_data):
