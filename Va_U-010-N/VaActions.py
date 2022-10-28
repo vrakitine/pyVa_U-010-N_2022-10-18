@@ -1,16 +1,16 @@
 from VaDirectionDetector import getDirection
 
-### Action_000 ###################################################
-def Action_000(va_data, local_data):
-    print('Action_000')
+### Action__start ###################################################
+def Action__start(va_data, local_data):
+    print('Action__start')
 
 
 
     return getDirection(va_data, local_data)
 
-### Action_010 ###################################################
-def Action_010(va_data, local_data):
-    print('Action_010')
+### Action__add_to_sum ###################################################
+def Action__add_to_sum(va_data, local_data):
+    print('Action__add_to_sum')
 
     local_data.set('The sum of elements of array...sum', 
     local_data.get('The sum of elements of array...sum') + local_data.get('The current element of array M...current element'))
@@ -18,9 +18,9 @@ def Action_010(va_data, local_data):
 
     return getDirection(va_data, local_data)
 
-### Action_020 ###################################################
-def Action_020(va_data, local_data):
-    print('Action_020')
+### Action__do_nothing ###################################################
+def Action__do_nothing(va_data, local_data):
+    print('Action__do_nothing')
 
 
     return getDirection(va_data, local_data)

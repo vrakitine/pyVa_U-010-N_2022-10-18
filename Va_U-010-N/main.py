@@ -1,6 +1,5 @@
 import VaBox
 import VaActions
-import VaBoxTools
 import VaScript
 import VaConfig
 import VaConfigLocal
