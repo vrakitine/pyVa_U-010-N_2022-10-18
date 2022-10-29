@@ -46,6 +46,10 @@ def getCurrentElement(va_data, local_data):
     local_data.set('The depth level stack pointer...d_level_stack_pointer', -1)
     #for temp_d_level_desc in va_data['d_level_stack']['v']:
     for temp_d_level_desc in local_data.get('The depth level stack array...d_level_stack'):
+      print('------temp_d_level_desc------------------')
+      test = temp_d_level_desc.getAll()
+      print(test)
+      print('------------------------')
       #va_data['d_level_stack_pointer']['v'] += 1      
       local_data.set('The depth level stack pointer...d_level_stack_pointer', local_data.get('The depth level stack pointer...d_level_stack_pointer') + 1)  
       #if temp_d_level_desc['d_level_type'] == 'list':

@@ -52,7 +52,7 @@ def Action__do_nothing(va_data, local_data):
 
 ### Action__met_array ###################################################
 def Action__met_array(va_data, local_data):
-
+    print('Action__met_array')
     """
     va_data['d_level_desc']['v'] = {
     "d_level_type":"list", 
@@ -75,6 +75,10 @@ def Action__met_array(va_data, local_data):
 
     #va_data['d_level_stack_pointer']['v'] = 0
     local_data.set('The depth level stack pointer...d_level_stack_pointer', 0)
+
+    test = local_data.getAll()
+    print(test)
+    print('------------------------')
 
     return getDirection(va_data, local_data)
 

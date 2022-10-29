@@ -38,7 +38,20 @@ def getVaScript():
           "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
           "Direction_brown":"Action__met_array",  "_010":"Met an array",
           "Direction_red":"Action_9000",  "_010":"The end of array"
-      },   
+      },      
+      "Action__met_array":{
+          "_agent_position":{
+              "en-US":"The v-agent is skipping the current element of array",
+              "ru-RU":"v-agent пропускает текущий элемент массива"
+          },
+          "_action_description":{
+              "_010":"empty"
+          },
+          "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
+          "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
+          "Direction_brown":"Action__met_array",  "_010":"Met an array",
+          "Direction_red":"Action_9000",  "_010":"The end of array"
+      },    
       "Action_9000":{
           "_agent_position":{
               "en-US":"The v-agent found the end of array",
