@@ -14,5 +14,7 @@ def setup(local):
     local.get('The depth level description...d_level_description_obj').defineVariable("The depth level index...d_index", -1)
     local.get('The depth level description...d_level_description_obj').defineVariable("The depth level max index...d_max_index", -1)
     
-
+    local.defineVariable('The depth level pointer...d_level_pointer', -1)
+    local.defineVariable('The depth level stack array...d_level_stack', [])
+    local.defineVariable('The depth level stack pointer...d_level_stack_pointer', -1)
 
