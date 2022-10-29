@@ -5,6 +5,31 @@ from VaData import VaData
 def Action__start(va_data, local_data):
     print('Action__start')
 
+    ### Check Input Data
+    """
+    if isinstance(va_data['M']['v'], list) and len(va_data['M']['v']) > 0:
+      va_data['d_level_desc']['v'] = {
+            "d_level_type":"list", 
+            "d_index":0, 
+            "d_max_index":len(va_data['M']['v']) - 1
+          }
+      va_data['d_level_stack']['v'].append(va_data['d_level_desc']['v'])
+    """
+    if isinstance(local_data.get('Input array...M'), list) and len(local_data.get('Input array...M')) > 0:
+        temp_d_level_description_obj = VaData()
+        temp_d_level_description_obj.defineVariable("The depth level...d_level_type","list")
+        temp_d_level_description_obj.defineVariable("The depth level index...d_index", 0)
+        temp_d_level_description_obj.defineVariable("The depth level max index...d_max_index",len(local_data.get('Input array...M')) - 1)
+
+        #va_data['d_level_stack']['v'].append(va_data['d_level_desc']['v'])
+        temp_d_level_stack = []
+        temp_d_level_stack.append(temp_d_level_description_obj)
+        local_data.set('The depth level stack array...d_level_stack', temp_d_level_stack)
+
+    print('-------Action__start-----------------')
+    test = local_data.getAll()
+    print(test)
+    print('------------------------')
 
     return getDirection(va_data, local_data)
 
@@ -37,22 +62,19 @@ def Action__met_array(va_data, local_data):
 
     """
 
-    local_data.set('The depth level description...d_level_description_obj', VaData())
-    local_data.get('The depth level description...d_level_description_obj').set("The depth level...d_level_type","list")
-    local_data.get('The depth level description...d_level_description_obj').set("The depth level index...d_index", 0)
-    local_data.get('The depth level description...d_level_description_obj').set("The depth level max index...d_max_index",
-                        len(local_data.get('The current element of array M...current element')) - 1)
-
+    temp_d_level_description_obj = VaData()
+    temp_d_level_description_obj.defineVariable("The depth level...d_level_type","list")
+    temp_d_level_description_obj.defineVariable("The depth level index...d_index", 0)
+    temp_d_level_description_obj.defineVariable("The depth level max index...d_max_index",
+        len(local_data.get('The current element of array M...current element')) - 1)
 
     #va_data['d_level_stack']['v'].append(va_data['d_level_desc']['v'])
     temp_d_level_stack = local_data.get('The depth level stack array...d_level_stack')
-    temp_d_level_stack.append(local_data.get('The depth level description...d_level_description_obj'))
-    local_data.set('The depth level stack array...d_level_stack',temp_d_level_stack)
+    temp_d_level_stack.append(temp_d_level_description_obj)
+    local_data.set('The depth level stack array...d_level_stack', temp_d_level_stack)
 
     #va_data['d_level_stack_pointer']['v'] = 0
     local_data.set('The depth level stack pointer...d_level_stack_pointer', 0)
-
-
 
     return getDirection(va_data, local_data)
 

@@ -9,13 +9,18 @@ def getDirection(va_data, local_data):
 
   va_data.set('Direction...direction', 'The_code_of_the_direction_is _unknown')
 
-  if len(va_data['d_level_stack']['v']) == 0:
+  #if len(va_data['d_level_stack']['v']) == 0:
+  if len(local_data.get('The depth level stack array...d_level_stack')) == 0:
     va_data.set('Direction...direction', 'Direction_red')
 
     return va_data  #-----------> Direction_red "d_level_stack is empty"
 
   # get current element of array      
   local_data.set('The current element of array...current element', getCurrentElement(va_data, local_data))
+
+  print('-------get current element of array-----------------')
+  print(local_data.getNameValue('The current element of array...current element'))
+  print('------------------------')
 
   if isinstance(local_data.get('The current element of array...current element'), list): 
     va_data.set('Direction...direction', 'Direction_brown')

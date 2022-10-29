@@ -33,7 +33,7 @@ class VaData():
             self.va_data[temp[1]][0] = value
             self.va_data[temp[1]][1] = temp[0]
         if temp[1] not in self.va_data:
-            sys.exit('Error: Attempt to set undefined variable')
+            sys.exit('Error: Attempt to set undefined variable [' + key + ']')
 
     def get(self, key):
         temp = []

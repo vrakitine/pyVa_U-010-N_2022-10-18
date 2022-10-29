@@ -6,7 +6,7 @@ def setup(local):
 
     local.defineVariable('Input array...M', [])
     local.defineVariable('Index of current element of array...i_main', -1)
-    local.defineVariable('The current element of array M...current element', 0)
+    local.defineVariable('The current element of array M...current element', 'Unknown')
     local.defineVariable('The sum of elements of array...sum', 0)
 
     local.defineVariable('The depth level description...d_level_description_obj', VaData())
