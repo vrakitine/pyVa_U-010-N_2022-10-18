@@ -1,4 +1,4 @@
-## U-030-N-Color/VAOP code in Classes with new VA-script
+## U-020-N-Color/VAOP code in Classes with new VA-script
 
 ####################################################################
 ### VA-script | Start >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -18,7 +18,6 @@ class VA_script:
           "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
           "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
           "Direction_brown":"Action__met_array",  "_010":"Met an array",
-          "Direction_deep_brown":"Action__met_empty_array",  "_010":"Met an empty array",
           "Direction_red":"Action_9000",  "_010":"The end of array"
       },
       "Action__add_to_sum":{
@@ -32,7 +31,6 @@ class VA_script:
           "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
           "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
           "Direction_brown":"Action__met_array",  "_010":"Met an array",
-          "Direction_deep_brown":"Action__met_empty_array",  "_010":"Met an empty array",
           "Direction_red":"Action_9000",  "_010":"The end of array"
       },
       "Action__do_nothing":{
@@ -46,7 +44,6 @@ class VA_script:
           "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
           "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
           "Direction_brown":"Action__met_array",  "_010":"Met an array",
-          "Direction_deep_brown":"Action__met_empty_array",  "_010":"Met an empty array",
           "Direction_red":"Action_9000",  "_010":"The end of array"
       }, 
       "Action__met_array":{
@@ -60,23 +57,8 @@ class VA_script:
           "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
           "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
           "Direction_brown":"Action__met_array",  "_010":"Met an array",
-          "Direction_deep_brown":"Action__met_empty_array",  "_010":"Met an empty array",
           "Direction_red":"Action_9000",  "_010":"The end of array"
-      }, 
-      "Action__met_empty_array":{
-          "_agent_position":{
-              "en-US":"The v-agent is skipping the current element of array",
-              "ru-RU":"v-agent пропускает текущий элемент массива"
-          },
-          "_action_description":{
-              "_010":"empty"
-          },
-          "Direction_green":"Action__add_to_sum",  "_010":" > 0)",
-          "Direction_blue":"Action__do_nothing",  "_010":" <= 0",
-          "Direction_brown":"Action__met_array",  "_010":"Met an array",
-          "Direction_deep_brown":"Action__met_empty_array",  "_010":"Met an empty array",
-          "Direction_red":"Action_9000",  "_010":"The end of array"
-      },     
+      },    
       "Action_9000":{
           "_agent_position":{
               "en-US":"The v-agent found the end of array",
@@ -87,8 +69,7 @@ class VA_script:
           },
           "Direction_green":"Action_END",  "_010":" > 0",
           "Direction_blue":"Action_END",  "_010":" <= 0",
-          "Direction_brown":"Action_END",  "_010":"Met an array",
-          "Direction_deep_brown":"Action_END",  "_010":"Met an empty array",
+          "Direction_brown":"Action__met_array",  "_010":"Met an array",
           "Direction_red":"Action_END",  "_010":"The end of array"
       }
     }
@@ -144,11 +125,6 @@ class Actions:
 
     va_data['va']['v']['va_trace']['v'] = 'Action__start'
 
-    """
-    va_data[''] = {}
-    va_data['']['v'] = 0
-    va_data['']['d'] = "Empty"
-    """
     ### End | Init setting
 
     ### Check Input Data
@@ -160,9 +136,7 @@ class Actions:
             "d_max_index":len(va_data['M']['v']) - 1
           }
       va_data['d_level_stack']['v'].append(va_data['d_level_desc']['v'])
-      va_data['d_level_stack_pointer']['v'] = 0 # ???
-
-
+    
     ### for log
     va_data['custom_log']['v'].append('current_element')
     va_data['custom_log']['v'].append('sum_01')
@@ -205,15 +179,6 @@ class Actions:
 
     return Actions_tools.getDirectionCodeDependedOfTheValueOfTheCurrentElementOfArray(va_data)
 
-  ### Action__met_empty_array ###################################################
-  def Action__met_empty_array(va_data):
-
-    ### for log
-    va_data['custom_log']['v'].append('current_element')
-    va_data['custom_log']['v'].append('sum_01')
-
-    return Actions_tools.getDirectionCodeDependedOfTheValueOfTheCurrentElementOfArray(va_data)
-
   ### Action_9000 ###################################################
   def Action_9000(va_data):
 
@@ -232,11 +197,10 @@ class Actions_tools:
 
     # In this function below we are determine the direction depending on the current element of the array.
 
-    # "Direction_green"       -> "If the current element of the array > 0 and int and (first or third)",
-    # "Direction_blue"        -> "If the current element of the array <= 0 or not int or not first or third",
-    # "Direction_brown"       -> "If the current element of the array is array",
-    # "Direction_deep_brown"  -> "If the current element of the array is empty array",
-    # "Direction_red"         -> "If the current element of the array can not be taken in case of end of array"
+    # "Direction_green" -> "If the current element of the array > 0",
+    # "Direction_blue"  -> "If the current element of the array <= 0",
+    # "Direction_brown" -> "If the current element of the array is array",
+    # "Direction_red"   -> "If the current element of the array can not be taken in case of end of array"
 
     va_data['va']['v']['direction']['d'] = "The description of the direction is unknown"
     va_data['va']['v']['direction']['v'] = "The_code_of_the_direction_is_unknown"
@@ -251,17 +215,10 @@ class Actions_tools:
     va_data['current_element']['v'] = Actions_tools.getCurrentElement(va_data)
 
     if isinstance(va_data['current_element']['v'], list): 
-      if len(va_data['current_element']['v']) > 0:
-        va_data['va']['v']['direction']['d'] = "The current element is an array"
-        va_data['va']['v']['direction']['v'] = "Direction_brown"
+      va_data['va']['v']['direction']['d'] = "The current element is an array"
+      va_data['va']['v']['direction']['v'] = "Direction_brown"
 
-        return va_data  #-----------> Direction_brown
-
-      if len(va_data['current_element']['v']) == 0:
-        va_data['va']['v']['direction']['d'] = "The current element is an empty array"
-        va_data['va']['v']['direction']['v'] = "Direction_deep_brown"
-
-        return va_data  #-----------> Direction_deep_brown
+      return va_data  #-----------> Direction_brown
 
     if va_data['current_element']['v'] > 0: 
       va_data['va']['v']['direction']['d'] = "The current element is a positive number"
@@ -289,16 +246,16 @@ class Actions_tools:
           temp_list = temp_list[temp_d_level_desc['d_index']]
 
     temp_d_level_desc['d_index'] += 1
- 
+
     if temp_d_level_desc['d_index'] > temp_d_level_desc['d_max_index']:
-      if not isinstance(temp_list, list) or (isinstance(temp_list, list) and len(temp_list) == 0):
+      if not isinstance(temp_list, list): 
         temp_d_level_stack = []
         for temp_d_level_desc in va_data['d_level_stack']['v']:
           if temp_d_level_desc['d_index'] <= temp_d_level_desc['d_max_index']:
             temp_d_level_stack.append(temp_d_level_desc)
         va_data['d_level_stack']['v'] = temp_d_level_stack
 
-    return temp_list   
+    return temp_list
 
   def Action_variables_tracking_row(va_data):
     print(">>> custom_log -->")
@@ -485,7 +442,7 @@ va_data['va']['v']['jump_pause_after_actions']['d'] = "The jump pause after acti
 #####################################################
 va_data['M'] = {}
 va_data['M']['d'] = "Input array"
-va_data['M']['v'] = [4,[],6]
+va_data['M']['v'] = [4,[5,[4]]]
 
 
 print(va_data['M'])
@@ -498,7 +455,9 @@ print(va_data['sum_01'])
 print('\n########################################')
 print(va_data['va']['v']['va_trace'])
 #####################################################
-va_data['M']['v'] = [4,[5,[]]]
+va_data['M']['v'] = [4,[5,[4]]]
+
+va_data['M']['v'] = [4,[5,-3,1,[4]]]
 
 
 print('\n')

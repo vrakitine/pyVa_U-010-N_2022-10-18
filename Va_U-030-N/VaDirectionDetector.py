@@ -5,11 +5,12 @@ def getDirection(va_data, local_data):
   # "Direction_green" -> "If the current element of the array > 0",
   # "Direction_blue"  -> "If the current element of the array <= 0",
   # "Direction_brown" -> "If the current element of the array is array",
+  # "Direction_deep_brown"  -> "If the current element of the array is empty array",
   # "Direction_red"   -> "If the current element of the array can not be taken in case of end of array"
+
 
   va_data.set('Direction...direction', 'The_code_of_the_direction_is _unknown')
 
-  #if len(va_data['d_level_stack']['v']) == 0:
   if len(local_data.get('The depth level stack array...d_level_stack')) == 0:
     va_data.set('Direction...direction', 'Direction_red')
 
@@ -19,9 +20,15 @@ def getDirection(va_data, local_data):
   local_data.set('The current element of array...current element', getCurrentElement(va_data, local_data))
 
   if isinstance(local_data.get('The current element of array...current element'), list): 
-    va_data.set('Direction...direction', 'Direction_brown')
+    if len(local_data.get('The current element of array...current element')) > 0:
+      va_data.set('Direction...direction', 'Direction_brown')
 
-    return va_data  #-----------> Direction_brown
+      return va_data  #-----------> Direction_brown
+
+    if len(local_data.get('The current element of array...current element')) == 0:
+      va_data.set('Direction...direction', 'Direction_deep_brown')
+
+      return va_data  #-----------> Direction_deep_brown
 
   if local_data.get('The current element of array...current element') > 0: 
     va_data.set('Direction...direction', 'Direction_green')
@@ -61,7 +68,8 @@ def getCurrentElement(va_data, local_data):
     #if temp_d_level_desc['d_index'] > temp_d_level_desc['d_max_index']:
     if temp_d_level_desc.get('The depth level index...d_index') > temp_d_level_desc.get('The depth level max index...d_max_index'):
       #if not isinstance(temp_list, list): 
-      if not isinstance(temp_list, list): 
+      #if not isinstance(temp_list, list) or (isinstance(temp_list, list) and len(temp_list) == 0):
+      if not isinstance(temp_list, list) or (isinstance(temp_list, list) and len(temp_list) == 0): 
         #temp_d_level_stack = []
         temp_d_level_stack = []
         #for temp_d_level_desc in va_data['d_level_stack']['v']:

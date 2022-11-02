@@ -16,6 +16,8 @@ def Action__start(va_data, local_data):
         temp_d_level_stack = []
         temp_d_level_stack.append(temp_d_level_description_obj)
         local_data.set('The depth level stack array...d_level_stack', temp_d_level_stack)
+        #va_data['d_level_stack_pointer']['v'] = 0 # ???
+        local_data.set('The depth level stack pointer...d_level_stack_pointer', 0)
 
     return getDirection(va_data, local_data)
 
@@ -51,6 +53,13 @@ def Action__met_array(va_data, local_data):
     local_data.set('The depth level stack array...d_level_stack', temp_d_level_stack)
 
     local_data.set('The depth level stack pointer...d_level_stack_pointer', 0)
+
+    return getDirection(va_data, local_data)
+    
+### Action__do_nothing ###################################################
+def Action__met_empty_array(va_data, local_data):
+    print('Action__met_empty_array')
+
 
     return getDirection(va_data, local_data)
 

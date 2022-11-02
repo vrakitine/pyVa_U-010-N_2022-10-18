@@ -9,7 +9,7 @@ VaConfig.setup(va_data)
 local_data = VaData()
 VaConfigLocal.setup(local_data)
 
-local_data.set('Input array...M', [5, -6 , [3,[3,-1]]])
+local_data.set('Input array...M', [5, [] , [3,[]]])
 
 print('------------------------')
 print(local_data.getNameValue('Input array...M'))
